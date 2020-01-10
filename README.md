@@ -8,15 +8,29 @@ A library of useful functions to extends the standard spark library.
 + dropColumns(columns: List[String])
 + fillingRate()
 + printFillingRate
++ sqlAdvanced
 
 
 ## How to use:
 
+#### flattenSchema
 ```scala
 import org.charik.sparktools.sql.functions._
 val flatDF = df.flattenSchema("_")
 ```
 
+
+#### sqlAdvanced
+Execute multi-line sql requests and return the last request as DataFrame.
+Support comments starting with `#` or `--`
+```scala
+import org.charik.sparktools.sql._
+val df = spark.sqlAdvanced("""  
+    CREATE TEMPORARY VIEW Table as (SELECT * FROM json.`src/test.json` );
+    # This is a comment
+    SELECT * FROM Table;
+""")
+```
 
 ## ToDo:
 

@@ -4,7 +4,12 @@ import org.apache.spark.sql.{Column, DataFrame}
 
 package object functions {
   implicit class DFWithExtraOperations(df: DataFrame) {
-    def flattenSchema(sep: String): DataFrame = {
+    /**
+     * Flatten a DataFrame nested schema by replacing `.` with a separator.
+     * @param sep [[String]] a separator to replace the dot in column names. Default: `_`
+     * @return [[DataFrame]] DataFrame with flatten schema
+     */
+    def flattenSchema(sep: String = "_"): DataFrame = {
       df.select(nestedColumnsUtils.getFlatSchemaExpr(df.schema, sep): _*)
     }
 
