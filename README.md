@@ -1,14 +1,15 @@
 # Spark-Tools
-A library of useful functions to extends the standard spark library.
+This is a collection of useful functions to extends the standard spark library.
 
 ## Additional functions
 
-+ flattenSchema(sep: String)
-+ withColumnNested(colName: String, newCol: Column)
-+ dropColumns(columns: List[String])
-+ fillingRate()
-+ printFillingRate
-+ sqlAdvanced
+* sql.functions: 
+    + flattenSchema(sep: String): DataFrame
+    + withColumnNested(colName: String, newCol: Column): DataFrame
+    + dropColumns(columns: List[String]): DataFrame
+    + fillingRate(): DataFrame
+    + printFillingRate: unit
+    + sqlAdvanced(sqlText: String): DataFrame
 
 
 ## How to use:
@@ -17,6 +18,18 @@ A library of useful functions to extends the standard spark library.
 ```scala
 import org.charik.sparktools.sql.functions._
 val flatDF = df.flattenSchema("_")
+```
+
+#### withColumnNested
+```scala
+import org.charik.sparktools.sql.functions._
+val nestedDF = df.withColumnNested("user.flag.active", lit(1))
+```
+
+#### dropColumns
+```scala
+import org.charik.sparktools.sql.functions._
+val lightDF = df.dropColumns(List("name", "password", "email"))
 ```
 
 
