@@ -33,5 +33,12 @@ val df = spark.sqlAdvanced("""
 ```
 
 ## ToDo:
-
-+ withColumnNestedRenamed(colName: String, newColName: String)
+* sql.functions:
+    + withColumnNestedRenamed(colName: String, newColName: String) : DataFrame
+    + withColumnsSuffixed(colNames: List[String]) : DataFrame
+    + withColumnsPreffixed(colNames: List[String]) : DataFrame
+    + withColumnsConcatenated(colName: String, colNames: List[String], sep: String="_") : DataFrame
+    + orderColumns(dir: String = "asc") : DataFrame
+    + join(df: DataFrame, on, how: String="left", lsuffix: String, rsuffix: String)
+* sql.RefinedDataset
+    + as[T]
