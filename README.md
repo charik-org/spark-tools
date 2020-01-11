@@ -19,6 +19,18 @@ import org.charik.sparktools.sql.functions._
 val flatDF = df.flattenSchema("_")
 ```
 
+#### withColumnNested
+```scala
+import org.charik.sparktools.sql.functions._
+val res = df.withColumnNested("user.name", lit("test"))
+```
+
+#### dropColumns
+```scala
+import org.charik.sparktools.sql.functions._
+val res = df.dropColumns(List("name", "age", "password"))
+```
+
 
 #### sqlAdvanced
 Execute multi-line sql requests and return the last request as DataFrame.
@@ -35,3 +47,4 @@ val df = spark.sqlAdvanced("""
 ## ToDo:
 
 + withColumnNestedRenamed(colName: String, newColName: String)
++ compareDF(df2: DataFrame)
