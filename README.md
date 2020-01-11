@@ -1,14 +1,15 @@
 # Spark-Tools
-A library of useful functions to extends the standard spark library.
+This is a collection of useful functions to extends the standard spark library.
 
 ## Additional functions
 
-+ flattenSchema(sep: String)
-+ withColumnNested(colName: String, newCol: Column)
-+ dropColumns(columns: List[String])
-+ fillingRate()
-+ printFillingRate
-+ sqlAdvanced
+* sql.functions: 
+    + flattenSchema(sep: String): DataFrame
+    + withColumnNested(colName: String, newCol: Column): DataFrame
+    + dropColumns(columns: List[String]): DataFrame
+    + fillingRate(): DataFrame
+    + printFillingRate: unit
+    + sqlAdvanced(sqlText: String): DataFrame
 
 
 ## How to use:
@@ -22,13 +23,13 @@ val flatDF = df.flattenSchema("_")
 #### withColumnNested
 ```scala
 import org.charik.sparktools.sql.functions._
-val res = df.withColumnNested("user.name", lit("test"))
+val nestedDF = df.withColumnNested("user.flag.active", lit(1))
 ```
 
 #### dropColumns
 ```scala
 import org.charik.sparktools.sql.functions._
-val res = df.dropColumns(List("name", "age", "password"))
+val lightDF = df.dropColumns(List("name", "password", "email"))
 ```
 
 
@@ -45,6 +46,15 @@ val df = spark.sqlAdvanced("""
 ```
 
 ## ToDo:
-
-+ withColumnNestedRenamed(colName: String, newColName: String)
-+ compareDF(df2: DataFrame)
+* sql.functions:
+    + withColumnNestedRenamed(colName: String, newColName: String) : DataFrame
+    + withColumnsSuffixed(colNames: List[String]) : DataFrame
+    + withColumnsPreffixed(colNames: List[String]) : DataFrame
+    + withColumnsConcatenated(colName: String, colNames: List[String], sep: String="_") : DataFrame
+    + orderColumns(dir: String = "asc") : DataFrame
+    + join(df: DataFrame, on, how: String="left", lsuffix: String, rsuffix: String)
+* sql.testing:
+    + compareSchema(df: DataFrame): Boolean
+    + compareAll(df: DataFrame): Boolean
+* sql.RefinedDataset
+    + as[T]
