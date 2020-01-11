@@ -29,5 +29,13 @@ package object functions {
       basicColumnsUtils.dropColumns(df, columns)
     }
 
+    def withColumnsSuffixed(suffix: String, colNames: List[String] = List.empty): DataFrame = {
+      basicColumnsUtils.withColumnsSuffixed(df, suffix, colNames)
+    }
+
+    def withColumnsPrefixed(prefix: String, colNames: List[String] = List.empty): DataFrame = {
+      basicColumnsUtils.withColumnsPrefixed(df, prefix, colNames)
+    }
+
   }
 }
