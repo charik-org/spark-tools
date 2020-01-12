@@ -23,7 +23,7 @@ object Dependencies {
     val sparkCassandraConnector = "com.datastax.spark" %% "spark-cassandra-connector" % version
 
     val sparkCassandraConnectorEmbedded = "com.datastax.spark" %% "spark-cassandra-connector-embedded" % version % Test exclude("org.slf4j", "log4j-over-slf4j")
-    val sparkCassandraConnectorUnshaded = "com.datastax.spark" %% "spark-cassandra-connector-unshaded" % version
+    val sparkCassandraConnectorUnshaded = "com.datastax.spark" %% "spark-cassandra-connector-unshaded" % version % Test
     val cassandraAllDependency = "org.apache.cassandra" % "cassandra-all" % "3.2" % Test exclude("org.slf4j", "log4j-over-slf4j")
   }
 

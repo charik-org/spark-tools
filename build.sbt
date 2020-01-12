@@ -1,6 +1,8 @@
 name := "spark-tools"
 
-version := "1.0.0"
+version := "1.0.0-SNAPSHOT"
+
+description := ""
 
 scalaVersion := "2.11.8"
 
@@ -66,3 +68,37 @@ artifact in (Compile, assembly) := {
 }
 addArtifact(artifact in (Compile, assembly), assembly)
 
+
+import sbt.url
+
+organization := "org.charik.sparktools"
+organizationName := "Charik"
+organizationHomepage := Some(url("http://charik.org"))
+
+scmInfo := Some(
+  ScmInfo(
+    url("https://github.com/helkaroui/spark-tools"),
+    "scm:git@github.com:helkaroui/spark-tools.git"
+  )
+)
+developers := List(
+  Developer(
+    id    = "helkaroui",
+    name  = "Hamza",
+    email = "helkarou@gmail.com",
+    url   = url("http://charik.org")
+  )
+)
+
+description := "This is a collection of useful functions to extends the standard spark library.."
+licenses := List("Apache 2" -> new URL("http://www.apache.org/licenses/LICENSE-2.0.txt"))
+homepage := Some(url("https://github.com/helkaroui/spark-tools"))
+
+// Remove all additional repository other than Maven Central from POM
+pomIncludeRepository := { _ => false }
+publishTo := {
+  val nexus = "https://oss.sonatype.org/"
+  if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
+  else Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}
+publishMavenStyle := true

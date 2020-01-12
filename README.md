@@ -77,3 +77,10 @@ val df = spark.sqlAdvanced("""
     + compareAll(df: DataFrame): Boolean
 * sql.RefinedDataset
     + as[T]
+
+
+
+## To publish in Maven Central:
+```sbt
+sbt publishSigned
+```
