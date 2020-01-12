@@ -2,6 +2,14 @@
 This is a collection of useful functions to extends the standard spark library.
 
 ## Install
+
+
+| Spark   | Scala  | SparkTools |
+| :------ |:------:| ----------:|
+|   2.3.0 |   2.11 |      1.0.0 |
+|   2.3.0 |   2.12 |            |
+|   2.4.0 |   2.11 |            |
+
 ```
 libraryDependencies += "org.charik" %% "sparktools" % "1.0.0"
 ```
