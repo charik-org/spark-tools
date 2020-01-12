@@ -1,6 +1,12 @@
 # Spark-Tools
 This is a collection of useful functions to extends the standard spark library.
 
+## Install
+```
+libraryDependencies += "org.charik" %% "sparktools" % "1.0.0"
+```
+
+
 ## Additional functions
 
 * Basic column utils: 
@@ -16,7 +22,6 @@ This is a collection of useful functions to extends the standard spark library.
     
 * SQL 
     + sqlAdvanced(sqlText: String): DataFrame
-
 
 ## How to use:
 

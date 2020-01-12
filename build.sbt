@@ -1,6 +1,6 @@
-name := "spark-tools"
+name := "sparktools"
 
-version := "1.0.0-SNAPSHOT"
+version := "1.0.0"
 
 description := ""
 
@@ -71,7 +71,7 @@ addArtifact(artifact in (Compile, assembly), assembly)
 
 import sbt.url
 
-organization := "org.charik.sparktools"
+organization := "org.charik"
 organizationName := "Charik"
 organizationHomepage := Some(url("http://charik.org"))
 
