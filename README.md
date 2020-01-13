@@ -6,8 +6,8 @@ This is a collection of useful functions to extends the standard spark library.
 
 | Spark   | Scala  | SparkTools |
 | :------ |:------:| ----------:|
-|   2.3.x |   2.11 / 2.12 |    "org.charik" %% "sparktools_2.3" % "1.0.0" |
-|   2.4.x |   2.11 |    "org.charik" %% "sparktools_2.4" % "1.0.0" |
+|   2.3.x |   2.11 / 2.12 |   ` "org.charik" %% "sparktools_2.3" % "1.0.0" ` |
+|   2.4.x |   2.11 |   ` "org.charik" %% "sparktools_2.4" % "1.0.0" ` |
 |   3.0.0 |   2.11 |    -- |
 
 ```
