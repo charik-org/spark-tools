@@ -71,7 +71,6 @@ addArtifact(artifact in (Compile, assembly), assembly)
 
 import sbt.url
 
-organization := "org.charik"
 organizationName := "Charik"
 organizationHomepage := Some(url("http://charik.org"))
 

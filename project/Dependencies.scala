@@ -11,7 +11,7 @@ object Dependencies {
   val scalaTest = "org.scalatest" %% "scalatest" % "3.0.5" % Test
 
   object Spark {
-    val version = "2.3.0"
+    val version = "2.3.+"
     val sparkCore = "org.apache.spark" %% "spark-core" % version % Provided
     val sparkSql = "org.apache.spark" %% "spark-sql" % version % Provided
 
@@ -20,7 +20,7 @@ object Dependencies {
 
   object Datastax {
     val version = "2.3.0"
-    val sparkCassandraConnector = "com.datastax.spark" %% "spark-cassandra-connector" % version
+    val sparkCassandraConnector = "com.datastax.spark" %% "spark-cassandra-connector" % version % Test
 
     val sparkCassandraConnectorEmbedded = "com.datastax.spark" %% "spark-cassandra-connector-embedded" % version % Test exclude("org.slf4j", "log4j-over-slf4j")
     val sparkCassandraConnectorUnshaded = "com.datastax.spark" %% "spark-cassandra-connector-unshaded" % version % Test

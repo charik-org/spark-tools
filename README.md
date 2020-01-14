@@ -1,3 +1,5 @@
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.charik/sparktools_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.charik/sparktools_2.11)
+
 # Spark-Tools
 This is a collection of useful functions to extends the standard spark library.
 
@@ -79,7 +81,7 @@ val df = spark.sqlAdvanced("""
 """)
 ```
 
-## ToDo:
+## RoadMap:
 * sql.functions:
     + withColumnNestedRenamed(colName: String, newColName: String) : DataFrame
     + withColumnsConcatenated(colName: String, colNames: List[String], sep: String="_") : DataFrame
@@ -91,9 +93,10 @@ val df = spark.sqlAdvanced("""
 * sql.RefinedDataset
     + as[T]
 
+# Contributing
 
+The main mechanisms for contribution are:
 
-## To publish in Maven Central:
-```sbt
-sbt publishSigned
-```
+* Reporting issues, suggesting improved functionality on Github issue tracker
+* Suggesting new features in this discussion thread (see [RoadMap](https://github.com/helkaroui/spark-tools/issues/1) for details)
+* Submitting Pull Requests (PRs) to fix issues, improve functionality.
