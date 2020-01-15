@@ -6,6 +6,6 @@ import org.charik.sparktools.sql.functions.statsUtils.fillingRate
 object printUtils {
 
   private[functions] def printFillingRate(df: DataFrame): Unit = {
-    println(fillingRate(df))
+    println(fillingRate(df).show)
   }
 }

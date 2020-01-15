@@ -42,7 +42,7 @@ object nestedColumnsUtils {
         }
         modifiedStruct
       }
-      case _  => createNestedStructs(splitted, newCol)
+      case _ => createNestedStructs(splitted, newCol)
     }
   }
 
@@ -66,7 +66,7 @@ object nestedColumnsUtils {
 
   // todo add rename nested column
 
-  private[sql] def getFlatSchemaExpr(schema: StructType, sep: String, colPrefix: String = null, castPrefix: String = null) : Array[Column] = {
+  private[sql] def getFlatSchemaExpr(schema: StructType, sep: String, colPrefix: String = null, castPrefix: String = null): Array[Column] = {
     schema.fields.flatMap(f => {
       val colName = if (colPrefix == null) f.name else (colPrefix + "." + f.name)
       val castName = if (castPrefix == null) f.name else (castPrefix + sep + f.name)

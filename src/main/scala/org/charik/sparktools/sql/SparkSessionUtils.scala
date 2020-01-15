@@ -11,12 +11,12 @@ private[sql] object SparkSessionUtils {
    */
   def sqlAdvanced(sc: SparkSession, sqlText: String): DataFrame = {
     val sqlTextWithoutComments = sqlText.split("\n")
-                                        .filter(!_.startsWith("#"))
-                                        .filter(!_.startsWith("--"))
-                                        .mkString("\n")
-                                        .trim
+      .filter(!_.startsWith("#"))
+      .filter(!_.startsWith("--"))
+      .mkString("\n")
+      .trim
     sqlTextWithoutComments.split(";")
-                          .map(sc.sql)
-                          .last
+      .map(sc.sql)
+      .last
   }
 }

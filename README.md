@@ -4,18 +4,28 @@
 This is a collection of useful functions to extends the standard spark library.
 
 ## Install
-
+Available via [maven central](https://mvnrepository.com/artifact/org.charik/sparktools). Add the latest release as a dependency to your project: Maven
 
 | Spark   | Scala  | SparkTools |
 | :------ |:------:| ----------:|
-|   2.3.0 |   2.11 |      1.0.0 |
-|   2.3.0 |   2.12 |            |
-|   2.4.0 |   2.11 |            |
+|   2.3.x |   2.11 |      1.0.0 |
+|   2.3.x |   2.12 |            |
+|   2.4.x |   2.11 |            |
+
+**sbt**
 
 ```
 libraryDependencies += "org.charik" %% "sparktools" % "1.0.0"
 ```
 
+**Maven**
+```
+<dependency>
+    <groupId>org.charik</groupId>
+    <artifactId>sparktools_2.11</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
 
 ## Additional functions
 
@@ -29,47 +39,48 @@ libraryDependencies += "org.charik" %% "sparktools" % "1.0.0"
 * Data Quality Utils
     + fillingRate(): DataFrame
     + printFillingRate: unit
+    + isPrimaryKey(colNames: List[String]): Boolean
     
 * SQL 
     + sqlAdvanced(sqlText: String): DataFrame
 
 ## How to use:
 
-#### flattenSchema
+### Basic column utils
+**flattenSchema**
 ```scala
 import org.charik.sparktools.sql.functions._
 val flatDF = df.flattenSchema("_")
 ```
 
-#### withColumnNested
+**withColumnNested**
 ```scala
 import org.charik.sparktools.sql.functions._
 val nestedDF = df.withColumnNested("user.flag.active", lit(1))
 ```
 
-#### withColumnsSuffixed
+**withColumnsSuffixed**
 ```scala
 import org.charik.sparktools.sql.functions._
 val renamedAllColumns = df.withColumnsSuffixed("_suffix")
 val renamedSomeColumns = df.withColumnsSuffixed("_suffix", List("id", "sale_id"))
 ```
 
-#### withColumnsPrefixed
+**withColumnsPrefixed**
 ```scala
 import org.charik.sparktools.sql.functions._
 val renamedAllColumns = df.withColumnsPrefixed("prefix_")
 val renamedSomeColumns = df.withColumnsPrefixed("prefix_", List("id", "sale_id"))
 ```
 
-
-#### dropColumns
+**dropColumns**
 ```scala
 import org.charik.sparktools.sql.functions._
 val lightDF = df.dropColumns(List("name", "password", "email"))
 ```
 
+**sqlAdvanced**
 
-#### sqlAdvanced
 Execute multi-line sql requests and return the last request as DataFrame.
 Support comments starting with `#` or `--`
 ```scala
@@ -80,6 +91,16 @@ val df = spark.sqlAdvanced("""
     SELECT * FROM Table;
 """)
 ```
+### Data Quality Utils
+**isPrimaryKey**
+```scala
+import org.charik.sparktools.sql.checks._
+df.isPrimaryKey(List("id", "sale_id"))
+```
+
+## More examples
+Our library contains much more functionality than what we showed in the basic example. We are in the process of adding more examples for its advanced features. 
+
 
 ## RoadMap:
 * sql.functions:
@@ -90,8 +111,14 @@ val df = spark.sqlAdvanced("""
 * sql.testing:
     + compareSchema(df: DataFrame): Boolean
     + compareAll(df: DataFrame): Boolean
-* sql.RefinedDataset
-    + as[T]
+* sql.checks
+    + isPrimaryKey(colNames: List[String]): Boolean
+    + isUnique(colName: String): Boolean
+    + isSchemaFlat: Boolean
+    + isComplete(colName: String): Boolean
+* sql.refined
+    + isConstraintValid(colName: String, constraint: RefinedType): Boolean
+
 
 # Contributing
 

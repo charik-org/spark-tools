@@ -17,10 +17,10 @@ class packageTest extends UnitTestBase {
   test("test withColumnNested should add a nested field to DataFrame.") {
     val nestedDF: DataFrame = spark.read.json("./src/test/resources/nested_df.json")
     val resultDF = nestedDF
-                            .withColumnNested("typology.1stLevelNestedField", lit(1))
-                            .withColumnNested("typology.flg.2ndLevelNestedField", lit(1))
-                            .withColumnNested("fromScratch.1stLevelNestedField", lit(1))
-                            .withColumnNested("fromScratch.level1.2ndLevelNestedField", lit(1))
+      .withColumnNested("typology.1stLevelNestedField", lit(1))
+      .withColumnNested("typology.flg.2ndLevelNestedField", lit(1))
+      .withColumnNested("fromScratch.1stLevelNestedField", lit(1))
+      .withColumnNested("fromScratch.level1.2ndLevelNestedField", lit(1))
 
     assert(resultDF.select("typology.1stLevelNestedField").take(1).head.getAs[Int]("1stLevelNestedField") == 1)
     assert(resultDF.select("typology.flg.2ndLevelNestedField").take(1).head.getAs[Int]("2ndLevelNestedField") == 1)
