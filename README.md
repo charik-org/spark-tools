@@ -40,6 +40,7 @@ libraryDependencies += "org.charik" %% "sparktools" % "1.0.0"
     + fillingRate(): DataFrame
     + printFillingRate: unit
     + isPrimaryKey(colNames: List[String]): Boolean
+    + isUnique(colName: String): Boolean
     
 * SQL 
     + sqlAdvanced(sqlText: String): DataFrame
@@ -96,6 +97,7 @@ val df = spark.sqlAdvanced("""
 ```scala
 import org.charik.sparktools.sql.checks._
 df.isPrimaryKey(List("id", "sale_id"))
+df.isUnique("id")
 ```
 
 ## More examples
@@ -112,8 +114,6 @@ Our library contains much more functionality than what we showed in the basic ex
     + compareSchema(df: DataFrame): Boolean
     + compareAll(df: DataFrame): Boolean
 * sql.checks
-    + isPrimaryKey(colNames: List[String]): Boolean
-    + isUnique(colName: String): Boolean
     + isSchemaFlat: Boolean
     + isComplete(colName: String): Boolean
 * sql.refined

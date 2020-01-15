@@ -9,6 +9,14 @@ private object ValidationUtils {
     countDuplicatedKeys == 0
   }
 
+  def countDuplicatedKey(df: DataFrame, colName: String): Long = {
+    df
+      .groupBy(colName)
+      .count()
+      .where(col("count") > 1)
+      .count()
+  }
+
   def countDuplicatedKey(df: DataFrame, colNames: List[String]): Long = {
     df
       .select(concat_ws("_", colNames.map(col): _*).as("pk"))
@@ -16,6 +24,11 @@ private object ValidationUtils {
       .count()
       .where(col("count") > 1)
       .count()
+  }
+
+  def isUnique(df: DataFrame, colName: String): Boolean = {
+    val countDuplicated = countDuplicatedKey(df, colName)
+    countDuplicated == 0
   }
 
 

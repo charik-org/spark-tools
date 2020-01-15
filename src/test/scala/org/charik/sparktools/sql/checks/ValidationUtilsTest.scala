@@ -6,7 +6,7 @@ import org.charik.sparktools.UnitTestBase
 
 class ValidationUtilsTest extends UnitTestBase {
 
-  test("testIsPrimaryKey") {
+  test("testIsPrimaryKey check if a set of columns are a primary key") {
     val inputDF = spark.createDataFrame(
       spark.sparkContext.parallelize(Seq(
         Row("1", "C1", "2018", "2018-04-22T16:39:12.000Z"),
@@ -26,7 +26,27 @@ class ValidationUtilsTest extends UnitTestBase {
 
   }
 
-  test("testCountDuplicatedKey") {
+  test("testIsUnique should check if column has unique values") {
+    val inputDF = spark.createDataFrame(
+      spark.sparkContext.parallelize(Seq(
+        Row("1", "C1", "2018", "2018-04-22T16:39:12.000Z"),
+        Row("2", "C1", "2018", "2018-05-10T16:39:12.000Z"),
+        Row("3", "C1", "2018", "2018-05-10T16:39:13.000Z")
+      )),
+      StructType(Seq(
+        StructField("ID", StringType, nullable = true),
+        StructField("CLIENT_ID", StringType, nullable = true),
+        StructField("year", StringType, nullable = true),
+        StructField("created_dt", StringType, nullable = true)
+      ))
+    )
+
+    assertTrue(ValidationUtils.isUnique(inputDF, "ID"))
+    assertTrue(!ValidationUtils.isUnique(inputDF, "CLIENT_ID"))
+
+  }
+
+  test("testCountDuplicatedKey should count duplicated keys") {
     val inputDF = spark.createDataFrame(
       spark.sparkContext.parallelize(Seq(
         Row("1", "C1", "2018", "2018-04-22T16:39:12.000Z"),

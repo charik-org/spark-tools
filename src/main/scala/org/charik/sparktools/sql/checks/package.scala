@@ -25,6 +25,10 @@ package object checks {
     def countDuplicatedKey(colNames: List[String]): Long = {
       ValidationUtils.countDuplicatedKey(df, colNames)
     }
+
+    def isUnique(colName: String): Boolean = {
+      ValidationUtils.isUnique(df, colName)
+    }
   }
 
 }
