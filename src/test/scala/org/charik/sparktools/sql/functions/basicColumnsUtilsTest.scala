@@ -51,4 +51,25 @@ class basicColumnsUtilsTest extends UnitTestBase {
     assert(renameSomeColumns.mkString(",") === "prefix_ID,prefix_CLIENT_ID,year,created_dt")
   }
 
+  test("renameDuplicatedColumns should rename duplicated columns") {
+    val inputDF = spark.createDataFrame(
+      spark.sparkContext.parallelize(Seq(
+        Row("1", "C1", "2018", "2018-04-22T16:39:12.000Z"),
+        Row("2", "C1", "2018", "2018-05-10T16:39:12.000Z"),
+        Row("3", "C1", "2018", "2018-05-10T16:39:13.000Z")
+      )),
+      StructType(Seq(
+        StructField("ID", StringType, nullable = true),
+        StructField("CLIENT_ID", StringType, nullable = true),
+        StructField("year", StringType, nullable = true),
+        StructField("created_dt", StringType, nullable = true)
+      ))
+    )
+
+    val dfDuplicatedColumns = inputDF.join(inputDF, Seq("ID"), "full")
+
+    val result = basicColumnsUtils.renameDuplicatedColumns(dfDuplicatedColumns)
+    println(result.show)
+  }
+
 }

@@ -77,6 +77,18 @@ package object functions {
       basicColumnsUtils.withColumnsPrefixed(df, prefix, colNames)
     }
 
+    def renameDuplicatedColumns: DataFrame = {
+      basicColumnsUtils.renameDuplicatedColumns(df)
+    }
+
+    def hasDuplicatedColumns: Boolean = {
+      basicColumnsUtils.hasDuplicatedColumns(df)
+    }
+
+    def getDuplicatedColumns: Set[String] = {
+      basicColumnsUtils.getDuplicatedColumns(df)
+    }
+
   }
 
 }

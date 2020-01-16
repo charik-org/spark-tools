@@ -1,16 +1,21 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.charik/sparktools_2.11/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.charik/sparktools_2.11)
 
 # Spark-Tools
-This is a collection of useful functions to extends the standard spark library.
+
+This is a collection of useful functions to extends the standard spark
+library.
 
 ## Install
-Available via [maven central](https://mvnrepository.com/artifact/org.charik/sparktools). Add the latest release as a dependency to your project: Maven
 
-| Spark   | Scala  | SparkTools |
-| :------ |:------:| ----------:|
-|   2.3.x |   2.11 |      1.0.0 |
-|   2.3.x |   2.12 |            |
-|   2.4.x |   2.11 |            |
+Available via
+[maven central](https://mvnrepository.com/artifact/org.charik/sparktools).
+Add the latest release as a dependency to your project: Maven
+
+| Spark | Scala | SparkTools |
+|:------|:-----:|-----------:|
+| 2.3.x | 2.11  |      1.0.0 |
+| 2.3.x | 2.12  |            |
+| 2.4.x | 2.11  |            |
 
 **sbt**
 
@@ -19,6 +24,7 @@ libraryDependencies += "org.charik" %% "sparktools" % "1.0.0"
 ```
 
 **Maven**
+
 ```
 <dependency>
     <groupId>org.charik</groupId>
@@ -29,38 +35,42 @@ libraryDependencies += "org.charik" %% "sparktools" % "1.0.0"
 
 ## Additional functions
 
-* Basic column utils: 
-    + flattenSchema(sep: String): DataFrame
-    + withColumnNested(colName: String, newCol: Column): DataFrame
-    + withColumnsSuffixed(colNames: List[String]) : DataFrame
-    + withColumnsPrefixed(colNames: List[String]) : DataFrame
-    + dropColumns(columns: List[String]): DataFrame
-    
+* Basic column utils:
+  + flattenSchema(sep: String): DataFrame
+  + withColumnNested(colName: String, newCol: Column): DataFrame
+  + withColumnsSuffixed(colNames: List[String]) : DataFrame
+  + withColumnsPrefixed(colNames: List[String]) : DataFrame
+  + dropColumns(columns: List[String]): DataFrame
+
 * Data Quality Utils
-    + fillingRate(): DataFrame
-    + printFillingRate: unit
-    + isPrimaryKey(colNames: List[String]): Boolean
-    + isUnique(colName: String): Boolean
-    
-* SQL 
-    + sqlAdvanced(sqlText: String): DataFrame
+  + fillingRate(): DataFrame
+  + printFillingRate: unit
+  + isPrimaryKey(colNames: List[String]): Boolean
+  + isUnique(colName: String): Boolean
+
+* SQL
+  + sqlAdvanced(sqlText: String): DataFrame
 
 ## How to use:
 
 ### Basic column utils
+
 **flattenSchema**
+
 ```scala
 import org.charik.sparktools.sql.functions._
 val flatDF = df.flattenSchema("_")
 ```
 
 **withColumnNested**
+
 ```scala
 import org.charik.sparktools.sql.functions._
 val nestedDF = df.withColumnNested("user.flag.active", lit(1))
 ```
 
 **withColumnsSuffixed**
+
 ```scala
 import org.charik.sparktools.sql.functions._
 val renamedAllColumns = df.withColumnsSuffixed("_suffix")
@@ -68,6 +78,7 @@ val renamedSomeColumns = df.withColumnsSuffixed("_suffix", List("id", "sale_id")
 ```
 
 **withColumnsPrefixed**
+
 ```scala
 import org.charik.sparktools.sql.functions._
 val renamedAllColumns = df.withColumnsPrefixed("prefix_")
@@ -75,6 +86,7 @@ val renamedSomeColumns = df.withColumnsPrefixed("prefix_", List("id", "sale_id")
 ```
 
 **dropColumns**
+
 ```scala
 import org.charik.sparktools.sql.functions._
 val lightDF = df.dropColumns(List("name", "password", "email"))
@@ -82,8 +94,9 @@ val lightDF = df.dropColumns(List("name", "password", "email"))
 
 **sqlAdvanced**
 
-Execute multi-line sql requests and return the last request as DataFrame.
-Support comments starting with `#` or `--`
+Execute multi-line sql requests and return the last request as
+DataFrame. Support comments starting with `#` or `--`
+
 ```scala
 import org.charik.sparktools.sql._
 val df = spark.sqlAdvanced("""  
@@ -92,8 +105,11 @@ val df = spark.sqlAdvanced("""
     SELECT * FROM Table;
 """)
 ```
+
 ### Data Quality Utils
+
 **isPrimaryKey**
+
 ```scala
 import org.charik.sparktools.sql.checks._
 df.isPrimaryKey(List("id", "sale_id"))
@@ -101,29 +117,44 @@ df.isUnique("id")
 ```
 
 ## More examples
-Our library contains much more functionality than what we showed in the basic example. We are in the process of adding more examples for its advanced features. 
+
+Our library contains much more functionality than what we showed in the
+basic example. We are in the process of adding more examples for its
+advanced features.
 
 
 ## RoadMap:
-* sql.functions:
-    + withColumnNestedRenamed(colName: String, newColName: String) : DataFrame
-    + withColumnsConcatenated(colName: String, colNames: List[String], sep: String="_") : DataFrame
-    + orderColumns(dir: String = "asc") : DataFrame
-    + join(df: DataFrame, on, how: String="left", lsuffix: String, rsuffix: String)
-* sql.testing:
-    + compareSchema(df: DataFrame): Boolean
-    + compareAll(df: DataFrame): Boolean
-* sql.checks
-    + isSchemaFlat: Boolean
-    + isComplete(colName: String): Boolean
-* sql.refined
-    + isConstraintValid(colName: String, constraint: RefinedType): Boolean
 
+* sql.functions:
+  + withColumnNestedRenamed(colName: String, newColName: String) :
+    DataFrame
+  + withColumnsConcatenated(colName: String, colNames: List[String],
+    sep: String="_") : DataFrame
+  + orderColumns(dir: String = "asc") : DataFrame
+  + join(df: DataFrame, on, how: String="left", lsuffix: String,
+    rsuffix: String)
+  + dropNestedColumn
+* sql.testing:
+  + compareSchema(df: DataFrame): Boolean
+  + compareAll(df: DataFrame): Boolean
+* sql.checks
+  + isSchemaFlat: Boolean
+  + isComplete(colName: String): Boolean
+* sql.refined
+  + isConstraintValid(colName: String, constraint: RefinedType): Boolean
++ sql.dates
+  + addDays
+  + addYears
+  + addHours
+  + litToday
 
 # Contributing
 
 The main mechanisms for contribution are:
 
-* Reporting issues, suggesting improved functionality on Github issue tracker
-* Suggesting new features in this discussion thread (see [RoadMap](https://github.com/helkaroui/spark-tools/issues/1) for details)
+* Reporting issues, suggesting improved functionality on Github issue
+  tracker
+* Suggesting new features in this discussion thread (see
+  [RoadMap](https://github.com/helkaroui/spark-tools/issues/1) for
+  details)
 * Submitting Pull Requests (PRs) to fix issues, improve functionality.
