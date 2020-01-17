@@ -15,11 +15,11 @@ object Dependencies {
     val sparkCore = "org.apache.spark" %% "spark-core" % version % Provided
     val sparkSql = "org.apache.spark" %% "spark-sql" % version % Provided
 
-    val sparkTesting = "com.holdenkarau" %% "spark-testing-base" % "2.1.0_0.8.0" % Test
+    val sparkTesting = "com.holdenkarau" %% "spark-testing-base" % "2.4.0_0.12.0" % Test
   }
 
   object Datastax {
-    val version = "2.3.0"
+    val version = "2.4.2"
     val sparkCassandraConnector = "com.datastax.spark" %% "spark-cassandra-connector" % version % Test
 
     val sparkCassandraConnectorEmbedded = "com.datastax.spark" %% "spark-cassandra-connector-embedded" % version % Test exclude("org.slf4j", "log4j-over-slf4j")

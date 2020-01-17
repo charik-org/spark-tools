@@ -69,7 +69,7 @@ class basicColumnsUtilsTest extends UnitTestBase {
     val dfDuplicatedColumns = inputDF.join(inputDF, Seq("ID"), "full")
 
     val result = basicColumnsUtils.renameDuplicatedColumns(dfDuplicatedColumns)
-    println(result.show)
+    assert(result.columns.toSet.size == 7)
   }
 
 }

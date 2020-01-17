@@ -11,11 +11,10 @@ Available via
 [maven central](https://mvnrepository.com/artifact/org.charik/sparktools).
 Add the latest release as a dependency to your project: Maven
 
-| Spark | Scala | SparkTools |
-|:------|:-----:|-----------:|
-| 2.3.x | 2.11  |      1.0.0 |
-| 2.3.x | 2.12  |            |
-| 2.4.x | 2.11  |            |
+| Spark | Scala |      SparkTools              |
+|:------|:-----:|-----------------------------:|
+| 2.3.x | 2.11  | `"sparktools_2.3" % "1.0.1"` |
+| 2.4.x | 2.11  | `"sparktools_2.4" % "1.0.1"` |
 
 **sbt**
 
@@ -35,23 +34,9 @@ libraryDependencies += "org.charik" %% "sparktools" % "1.0.0"
 
 ## Additional functions
 
-* Basic column utils:
-  + flattenSchema(sep: String): DataFrame
-  + withColumnNested(colName: String, newCol: Column): DataFrame
-  + withColumnsSuffixed(colNames: List[String]) : DataFrame
-  + withColumnsPrefixed(colNames: List[String]) : DataFrame
-  + dropColumns(columns: List[String]): DataFrame
+* sql. [functions](docs/functions.ms)
 
-* Data Quality Utils
-  + fillingRate(): DataFrame
-  + printFillingRate: unit
-  + isPrimaryKey(colNames: List[String]): Boolean
-  + isUnique(colName: String): Boolean
-
-* SQL
-  + sqlAdvanced(sqlText: String): DataFrame
-
-## How to use:
+## Examples:
 
 ### Basic column utils
 
