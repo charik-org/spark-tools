@@ -11,7 +11,7 @@ object Dependencies {
   val scalaTest = "org.scalatest" %% "scalatest" % "3.0.5" % Test
 
   object Spark {
-    val version = "2.3.+"
+    val version = "2.4.+"
     val sparkCore = "org.apache.spark" %% "spark-core" % version % Provided
     val sparkSql = "org.apache.spark" %% "spark-sql" % version % Provided
 

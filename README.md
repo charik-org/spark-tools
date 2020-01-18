@@ -14,10 +14,11 @@ Available via
 
 Add the latest release as a dependency to your project:
 
-| Spark | Scala |                SparkTools                    |
-|:------|:-----:|---------------------------------------------:|
-| 2.3.x | 2.11  | `"org.charik" %% "sparktools_2.3" % "1.0.1"` |
-| 2.4.x | 2.11  | `"org.charik" %% "sparktools_2.4" % "1.0.1"` |
+| Spark | Scala |                SparkTools                |
+|:------|:-----:|-----------------------------------------:|
+| 2.2.x | 2.11  | `"org.charik" %% "sparktools" % "2.2.1"` |
+| 2.3.x | 2.11  | `"org.charik" %% "sparktools" % "2.3.1"` |
+| 2.4.x | 2.11  | `"org.charik" %% "sparktools" % "2.4.1"` |
 
 
 **Maven**
@@ -25,14 +26,15 @@ Add the latest release as a dependency to your project:
 ```
 <dependency>
     <groupId>org.charik</groupId>
-    <artifactId>sparktools_2.4_2.11</artifactId>
-    <version>1.0.1</version>
+    <artifactId>sparktools_2.11</artifactId>
+    <version>2.4.1</version>
 </dependency>
 ```
 
 ## Additional functions
-
-* sql. [functions](docs/functions.ms)
+* sparktools. [sql](docs/sql.md)
+* sparktools.sql. [functions](docs/functions.md)
+* sparktools.sql. [checks](docs/checks.md)
 
 ## Examples:
 

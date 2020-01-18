@@ -1,6 +1,6 @@
-name := "sparktools_2.3"
+name := "sparktools"
 
-version := "1.0.1"
+version := "2.4.1"
 
 description := "A collection of useful functions to extends the standard spark library."
 
