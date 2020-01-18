@@ -18,7 +18,7 @@ Add the latest release as a dependency to your project:
 |:------|:-----:|-----------------------------------------:|
 | 2.2.x | 2.11  | `"org.charik" %% "sparktools" % "2.2.1"` |
 | 2.3.x | 2.11  | `"org.charik" %% "sparktools" % "2.3.1"` |
-| 2.4.x | 2.11  | `"org.charik" %% "sparktools" % "2.4.1"` |
+| 2.4.x | 2.11 / 2.12  | `"org.charik" %% "sparktools" % "2.4.1"` |
 
 
 **Maven**

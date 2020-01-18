@@ -14,25 +14,7 @@ object Dependencies {
     val version = "2.4.+"
     val sparkCore = "org.apache.spark" %% "spark-core" % version % Provided
     val sparkSql = "org.apache.spark" %% "spark-sql" % version % Provided
-
     val sparkTesting = "com.holdenkarau" %% "spark-testing-base" % "2.4.0_0.12.0" % Test
-  }
-
-  object Datastax {
-    val version = "2.4.2"
-    val sparkCassandraConnector = "com.datastax.spark" %% "spark-cassandra-connector" % version % Test
-
-    val sparkCassandraConnectorEmbedded = "com.datastax.spark" %% "spark-cassandra-connector-embedded" % version % Test exclude("org.slf4j", "log4j-over-slf4j")
-    val sparkCassandraConnectorUnshaded = "com.datastax.spark" %% "spark-cassandra-connector-unshaded" % version % Test
-    val cassandraAllDependency = "org.apache.cassandra" % "cassandra-all" % "3.2" % Test exclude("org.slf4j", "log4j-over-slf4j")
-  }
-
-
-  object Jackson {
-    val version = "2.8.7"
-    val jacksonCore = "com.fasterxml.jackson.core" % "jackson-core" % version
-    val jacksonModuleScala = "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % version
-    val jacksonDatabind = "com.fasterxml.jackson.core" % "jackson-databind" % version
   }
 
 }

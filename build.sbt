@@ -4,7 +4,7 @@ version := "2.4.1"
 
 description := "A collection of useful functions to extends the standard spark library."
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.8"
 
 organization := "org.charik"
 
@@ -19,8 +19,6 @@ resolvers += "jitpack" at "https://jitpack.io"
 
 import Dependencies._
 import Dependencies.Spark._
-import Dependencies.Datastax._
-import Dependencies.Jackson._
 
 libraryDependencies ++= Seq(
   typesafeConfig,
@@ -28,18 +26,14 @@ libraryDependencies ++= Seq(
   lazyLogging,
   sparkCore,
   sparkSql,
-  sparkCassandraConnector,
   mockito,
   scalaTest,
-  sparkTesting,
-  sparkCassandraConnectorEmbedded,
-  sparkCassandraConnectorUnshaded,
-  cassandraAllDependency
+  sparkTesting
 )
 
-dependencyOverrides += jacksonCore
-dependencyOverrides += jacksonDatabind
-dependencyOverrides += jacksonModuleScala
+dependencyOverrides += "com.fasterxml.jackson.core" % "jackson-core" % "2.8.7"
+dependencyOverrides += "com.fasterxml.jackson.module" % "jackson-module-scala_2.12" % "2.8.7"
+dependencyOverrides += "com.fasterxml.jackson.core" % "jackson-databind" % "2.8.7"
 
 /**
  * Tests
